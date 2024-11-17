@@ -28,7 +28,9 @@ class _TodoListState extends State<TodoList> {
       ),
       body: ListView(children: _getItems()),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _displayDialog(context),
+        onPressed: () {
+          // _displayDialog(context)
+        },
         tooltip: 'Add Item',
         child: Icon(Icons.add),
       ),
@@ -53,34 +55,34 @@ class _TodoListState extends State<TodoList> {
   }
 
   //Generate a single item widget
-  Future<AlertDialog> _displayDialog(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Add a task to your List'),
-            content: TextField(
-              controller: _textFieldController,
-              decoration: const InputDecoration(hintText: 'Enter task here'),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: const Text('ADD'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  _addTodoItem(_textFieldController.text);
-                },
-              ),
-              FlatButton(
-                child: const Text('CANCEL'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
-  }
+  // Future<AlertDialog> _displayDialog(BuildContext context) async {
+  //   return showDialog(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return AlertDialog(
+  //           title: const Text('Add a task to your List'),
+  //           content: TextField(
+  //             controller: _textFieldController,
+  //             decoration: const InputDecoration(hintText: 'Enter task here'),
+  //           ),
+  //           actions: <Widget>[
+  //             FlatButton(
+  //               child: const Text('ADD'),
+  //               onPressed: () {
+  //                 Navigator.of(context).pop();
+  //                 _addTodoItem(_textFieldController.text);
+  //               },
+  //             ),
+  //             FlatButton(
+  //               child: const Text('CANCEL'),
+  //               onPressed: () {
+  //                 Navigator.of(context).pop();
+  //               },
+  //             )
+  //           ],
+  //         );
+  //       });
+  // }
 
   List<Widget> _getItems() {
     final List<Widget> _todoWidgets = <Widget>[];
