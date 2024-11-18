@@ -28,3 +28,7 @@ class OnDeleteTodoItemEvent extends TodoListEvent {
 
   const OnDeleteTodoItemEvent({required this.itemPosition});
 }
+
+class GetAllLocalTaskEvent extends TodoListEvent {
+  const GetAllLocalTaskEvent();
+}

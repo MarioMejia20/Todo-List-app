@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/src/core/injection/injection_container.dart';
 import 'package:todo/src/features/todo_list/business_logic/bloc/todo_list_bloc.dart';
+import 'package:todo/src/features/todo_list/data/repositories/todo_list_repository.dart';
 
 @RoutePage()
 class TodoListScreen extends StatelessWidget implements AutoRouteWrapper {
@@ -143,7 +145,9 @@ class TodoListScreen extends StatelessWidget implements AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider(
-      create: (context) => TodoListBloc(),
+      create: (context) => TodoListBloc(
+        todoListRepository: sl.get<TodoListRepository>(),
+      )..add(const GetAllLocalTaskEvent()),
       child: this,
     );
   }
