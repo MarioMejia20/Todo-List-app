@@ -16,7 +16,12 @@ class AuthWrapperScreen extends StatelessWidget {
           previous.isLogged != current.isLogged,
       builder: (context, state) {
         return AutoRouter.declarative(
-          routes: (_) => [SignInRoute()],
+          routes: (_) => [
+            if (state.screenStatus.isTodoList)
+              TodoListRoute()
+            else
+              SignInRoute(),
+          ],
         );
       },
     );
