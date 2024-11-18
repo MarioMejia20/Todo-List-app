@@ -20,6 +20,7 @@ class TodoListScreen extends StatelessWidget implements AutoRouteWrapper {
         if (state.showTodoItemDialog) {
           _textFieldController.text = '';
           showDialog(
+            barrierDismissible: false,
             context: context,
             builder: (builder) => AlertDialog(
               title: Text('Add a task to your List'),
