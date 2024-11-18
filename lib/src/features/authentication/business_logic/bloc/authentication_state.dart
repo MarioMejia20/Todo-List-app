@@ -2,10 +2,10 @@ part of 'authentication_bloc.dart';
 
 enum AuthenticationScreenStatus {
   signIn,
-  home;
+  todoList;
 
   bool get isSignIn => this == signIn;
-  bool get isHome => this == home;
+  bool get isTodoList => this == todoList;
 }
 
 class AuthenticationState extends Equatable {
@@ -15,7 +15,7 @@ class AuthenticationState extends Equatable {
   final bool isLogged;
   final bool showPassword;
   final bool signInEnabled;
-  final bool? isValidUser;
+  final bool isValidUser;
   final bool showUserError;
 
   const AuthenticationState({
@@ -25,7 +25,7 @@ class AuthenticationState extends Equatable {
     this.isLogged = false,
     this.showPassword = false,
     this.signInEnabled = false,
-    this.isValidUser,
+    this.isValidUser = false,
     this.showUserError = false,
   });
 

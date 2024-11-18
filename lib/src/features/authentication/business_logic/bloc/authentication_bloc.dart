@@ -14,6 +14,7 @@ class AuthenticationBloc
     on<ToggleUserPasswordEvent>(_toggleShowPassword);
     on<OnSignInEnableButtonEvent>(_enableSignInButton);
     on<OnUserValidationEvent>(_validateUserCredentials);
+    on<NavigationScreensEvent>(_navigationScreen);
   }
 
   /// Changed Texfield Actions
@@ -79,5 +80,10 @@ class AuthenticationBloc
         showUserError: !isValidUser,
       ),
     );
+  }
+
+  void _navigationScreen(
+      NavigationScreensEvent event, Emitter<AuthenticationState> emitter) {
+    emitter(state.copyWith(screenStatus: event.moveToScreen));
   }
 }
