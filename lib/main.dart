@@ -25,6 +25,9 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
       title: 'ToDo',
       routerConfig: _appRouter.config(),
     );
