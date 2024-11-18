@@ -38,3 +38,11 @@ class OnUserValidationEvent extends AuthenticationEvent {
   final bool hideSnackBar;
   const OnUserValidationEvent({this.hideSnackBar = false});
 }
+
+class NavigationScreensEvent extends AuthenticationEvent {
+  final AuthenticationScreenStatus moveToScreen;
+
+  const NavigationScreensEvent({
+    required this.moveToScreen,
+  });
+}

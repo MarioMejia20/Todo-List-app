@@ -27,6 +27,12 @@ abstract class _$TodoAppRouter extends RootStackRouter {
         child: const SignInScreen(),
       );
     },
+    TodoListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const TodoListScreen(),
+      );
+    },
   };
 }
 
@@ -54,6 +60,20 @@ class SignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignInRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [TodoListScreen]
+class TodoListRoute extends PageRouteInfo<void> {
+  const TodoListRoute({List<PageRouteInfo>? children})
+      : super(
+          TodoListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TodoListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

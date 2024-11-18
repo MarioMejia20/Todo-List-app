@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +15,7 @@ class SignInScreen extends StatelessWidget {
           previous.userName != current.userName ||
           previous.password != current.password ||
           previous.showPassword != current.showPassword ||
+          previous.isValidUser != current.isValidUser ||
           previous.showUserError != current.showUserError,
       listener: (context, state) {
         if (state.showUserError) {
@@ -25,9 +25,17 @@ class SignInScreen extends StatelessWidget {
             ),
           );
         }
+
+        if (state.isValidUser) {
+          context.read<AuthenticationBloc>().add(
+                NavigationScreensEvent(
+                  moveToScreen: AuthenticationScreenStatus.todoList,
+                ),
+              );
+        }
       },
       builder: (context, state) {
-        final statusBarSize = Platform.isAndroid || Platform.isIOS ? 50 : 0;
+        final statusBarSize = kIsWeb ? 0 : 50;
         return Scaffold(
           body: SafeArea(
             child: SingleChildScrollView(
